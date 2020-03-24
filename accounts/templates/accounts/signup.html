@@ -7,21 +7,21 @@
 	<form method="POST" action="{% url 'signup' %}">
 	{% csrf_token %}	
 
-	<h1 style="text-align: center; color: #da552f;margin-bottom: 30px">Sign Up here </h1>
+	<h2 style="text-align: center; color: #da552f;margin-bottom: 60px">Sign Up here </h2>
 
 	<label style="margin-bottom: 0px">Username</label>
-	<input type="text" name="username" style="width: 100%; margin-bottom: 20px; border: none;border-bottom: 1px solid black; background:#f8f9fa; padding: 5px; color: #da552f; outline:none">
+	<input type="text" name="username" style="width: 100%; margin-bottom: 20px; border: none;border-bottom: 1px solid black; background:#f8f9fa; padding: 5px; color: #da552f; outline:none" required>
 
 	<label style="margin-bottom: 0px; margin-top: 15px">Password</label>
-	<input type="password" name="password1" style="width: 100%; margin-bottom: 20px; border: none;border-bottom: 1px solid black; background:#f8f9fa; padding: 5px; color: #da552f; outline:none">
+	<input type="password" name="password1" style="width: 100%; margin-bottom: 20px; border: none;border-bottom: 1px solid black; background:#f8f9fa; padding: 5px; color: #da552f; outline:none" required>
 
 	<label style="margin-bottom: 0px; margin-top: 15px">Confirm Password</label>
-	<input type="password" name="password2" style="width: 100%; margin-bottom: 20px; border: none;border-bottom: 1px solid black; background:#f8f9fa; padding: 5px; color: #da552f; outline:none">
+	<input type="password" name="password2" style="width: 100%; margin-bottom: 20px; border: none;border-bottom: 1px solid black; background:#f8f9fa; padding: 5px; color: #da552f; outline:none" required>
 
 	<input type="submit" value="Sign up" class="btn float-right mt-4" style="background:#da552f;color: white ">
 
 	{% if error %}
-	<p style="margin-top:95px;font-size: 90%; color: #da552f; text-align: center;">{{ error }}</p>
+	<p style="margin-top:80px;font-size: 90%; color: #da552f; text-align: center;">{{ error }}</p>
 	{% endif %}
 
 	</form>

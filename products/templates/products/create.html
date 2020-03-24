@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="container" style="min-height: 500px">
+
+	<div class="container bg-light mx-auto px-5 py-3 mb-2" style="width: 100%;border: 1px solid grey;margin-top: 30px">
+	<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+	{% csrf_token %}	
+
+	<h2 style="color: #da552f;margin-bottom: 20px">Create New Product</h2>
+
+	<label style="margin-bottom: 0px">Title</label>
+	<input type="text" name="title" style="width: 100%; margin-bottom: 20px; border: none;border: 1px solid #da552f; background:#f8f9fa; padding: 5px; color: black; outline:none">
+
+	<label style="margin-bottom: 0px; margin-top: 15px">Body</label>
+	<input type="textarea" name="body" style="width: 100%;height: 100px; margin-bottom: 20px; border: none;border: 1px solid #da552f; background:#f8f9fa; padding: 5px; color: black; outline:none">
+
+	<label style="margin-bottom: 0px">URL</label>
+	<input type="text" name="url" style="width: 100%; margin-bottom: 20px; border: none;border: 1px solid #da552f; background:#f8f9fa; padding: 5px; color: black; outline:none">
+
+	<label style="margin-bottom: 0px; margin-top: 15px">Image</label><br>
+	<input type="file" name="image" style="width: auto; margin-bottom: 20px; border: none;background:#f8f9fa; padding: 5px; color: black; outline:none"><br>
+
+	<label style="margin-bottom: 0px; margin-top: 15px">Icon</label><br>
+	<input type="file" name="icon" style="width: auto; margin-bottom: 20px; border: none;background:#f8f9fa; padding: 5px; color: black; outline:none"><br>
+
+	<input type="submit" value="Add Product" class="btn mt-4" style="background:#da552f;color: white ">
+
+	{% if error %}
+	<p style="margin-top:95px;font-size: 90%; color: #da552f; text-align: center;">{{ error }}</p>
+	{% endif %}
+
+	</form>
+	</div>
+
+</div>
+
+{% endblock %}
