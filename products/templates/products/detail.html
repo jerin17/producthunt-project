@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load staticfiles %}
+
+<div class="container" style="min-height: 500px">
+
+	<div class="container bg-light mx-auto px-5 py-3 mb-2" style="width: 100%;border: 1px solid grey;margin-top: 30px">
+
+	<div class="row">
+		<div class="col-2">
+			<img src="{{ product.icon.url }}" width="100px" height="100px" class="ml-4 image.fluid">
+		</div>
+		<div class="col-10">
+			<a href="{{ product.url }}"><h1 style="color: #da552f;">{{ product.title }}</h1></a>
+			<a href="{{ product.url }}">{{ product.url }}</a>
+		</div>
+	</div>
+	<br>
+
+
+	<div class="row">
+		<div class="col-9">
+			<img src="{{ product.image.url }}" width=auto style="max-width: inherit; border: 1px dotted black">
+		</div>
+		<div class="col-3" >
+			<center>
+			<a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-lg btn-block my-2" style="color: white;outline: none;border: 1px solid #da552f;background:#da552f ">Upvote <span class="oi oi-thumb-up ml-1"></span></button></a><br>
+			<h6 style="color: #da552f;">Total Votes : {{ product.votes_total }}</h6>
+			</center>
+		</div>
+	</div>
+	<br>
+
+	<div class="row">
+		<div class="col-4">
+			<h5><span class="h6 oi oi-person"></span> Hunted by : {{ product.hunter.username }}</h5>
+			<p><span class="h6 oi oi-calendar"></span> {{ product.new_dt }}</p>
+		</div><br>
+	</div>
+
+	<div class="row">
+		<div class="col-8">
+			<p style="text-align: justify;min-height: 100px;padding: 10px; color: black;">{{ product.body }}</p>
+		</div><br>
+	</div>
+
+	</div>
+
+</div>
+
+<form id="upvote" method="POST" action="{% url 'upvote' product.id %}">
+	{% csrf_token %}
+	<input type="hidden" />
+</form>
+
+{% endblock %}

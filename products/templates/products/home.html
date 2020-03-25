@@ -1,5 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
-home test 123
+{% load staticfiles %}
+
+{% for product in products.all %}
+<div class="container">
+
+	<div class="container bg-light mx-auto px-5 py-3 mb-2" style="width: 100%;border: 1px solid grey;margin-top: 30px; cursor: pointer;" onclick="window.location='{% url 'detail' product.id %}';" >
+
+	<div class="row">
+		<div class="col-2">
+			<img src="{{ product.icon.url }}" width="100px" height="100px" class="ml-4 image.fluid">
+		</div>
+		<div class="col-6">
+			<a href="{% url 'detail' product.id %}"><h1 style="color: #da552f;">{{ product.title }}</h1></a>
+			<p style="text-align: justify;padding: 5px; color: black;">{{ product.summary }}</p>
+		</div>
+		<div class="col-4">
+			<center>
+			<a href="javascript:{document.getElementById('upvote+{{ product.id }}').submit()}"><button class="btn btn-primary btn-lg my-2" style="color: white;outline: none;border: 1px solid #da552f;background:#da552f ">Upvote <span class="oi oi-thumb-up ml-1"></span></button></a><br>
+			<h6 style="color: #da552f;">Total Votes : {{ product.votes_total }}</h6>
+			</center>
+		</div>
+
+	</div>
+	<br>
+
+	<div class="row">
+		<div class="col-4">
+			<h4>Hunted by {{ product.hunter.username }}</h4>
+			<h6>{{ product.new_dt }}</h6>
+		</div><br>
+	</div>
+
+	</div>
+
+</div>
+
+<form id="upvote+{{ product.id }}" method="POST" action="{% url 'upvote' product.id %}">
+	{% csrf_token %}
+	<input type="hidden" />
+</form>
+
+
+{% endfor %}
+
 {% endblock %}

@@ -59,10 +59,13 @@
     <ul class="navbar-nav ml-auto">
       {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link">Hi {{ user.username }}!</a>
+            <a class="nav-link">Hi, {{ user.username }}!</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'create' %}">Create Product <span class="oi oi-plus mr-1"></span></a>
+            <a class="nav-link" href="{% url 'home' %}" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'create' %}" >Create Product <span class="oi oi-plus mr-1"></span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}" style="color:white; background: #da552f"> Logout</a>
@@ -72,6 +75,9 @@
             </form> 
           </li>
       {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}" >Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'signup' %}">Sign Up<span class="sr-only">(current)</span></a>
           </li>
@@ -92,7 +98,7 @@
 </div>
 
 <footer class="text-muted">
-  <div class="container">
+  <div class="container mt-2">
     <p class="float-right" style="font-size: 90%"><a href="#">Back to top</a></p>
   	<p style="font-size: 90%">© {% now "Y"%} Product Hunt. All rights reserved.</p>
 
